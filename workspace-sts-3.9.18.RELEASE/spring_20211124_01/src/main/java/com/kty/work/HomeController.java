@@ -22,8 +22,12 @@ public class HomeController {
 	public String joinpage() {	
 		return "join";
 	}
-	@RequestMapping(value="/memberjoin", method=RequestMethod.POST)
-	public String memberjoin(Model model,@RequestParam("id") String id,
+	@RequestMapping(value = "joinpage2", method = RequestMethod.GET)
+	public String joinpage2() {	
+		return "join2";
+	}
+	@RequestMapping(value="/join", method=RequestMethod.POST)
+	public String join(Model model,@RequestParam("id") String id,
 			                  @RequestParam("password") String password,	
 			                  @RequestParam("name") String name,
 			                  @RequestParam("gender") String gender,
@@ -44,9 +48,9 @@ public class HomeController {
 		System.out.println(member);
 		
 		return "login";
-	}
-	@RequestMapping(value = "memberjoin2", method = RequestMethod.POST)
-	public String memberjoin2(@ModelAttribute MemberDTO member) {	
+	} // 쉽고 짧게 끝내는법
+	@RequestMapping(value = "join2", method = RequestMethod.POST)
+	public String join2(@ModelAttribute MemberDTO member) {	
 		System.out.println("memberjoin2: "+ member);
 		return "login";
 	}
