@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
-<aop-project name="spring.20211122"/>
+<aop-project name="spring_20211123_01"/>
+<aop-project name="spring_20211123_02"/>
+<aop-project name="spring_20211124_01"/>
+<aop-project name="spring_20211124_02"/>
 </aop-reference-model>
