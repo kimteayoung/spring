@@ -7,6 +7,8 @@ import lombok.Data;
 @Data
 public class TraineeDTO {
 	
+	
+	private long t_number;
 	private String t_name;
 	private int t_age;
 	private String t_phone;

@@ -1,15 +1,30 @@
 package com.kty.ex.repository;
 
+import java.util.List;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kty.ex.dto.TraineeDTO;
 
+
 @Repository
 public class TraineeRipository {
+	
+	@Autowired
+	private SqlSessionTemplate sql;
 
-	public void insert(TraineeDTO trainee) {
-		// TODO Auto-generated method stub
-		
+	public int insert(TraineeDTO trainee) {
+		return sql.insert("Trainee.insertTrainee", trainee);
+	}
+
+	public List<TraineeDTO> findAll() {		
+		return sql.selectList("Trainee.findAll");
+	}
+
+	public TraineeDTO findById(long t_number) {		
+		return sql.selectOne("Trainee.findById", t_number);
 	}
 
 }
