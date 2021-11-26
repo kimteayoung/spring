@@ -68,6 +68,40 @@ public class Homecontroller {
 			
 			return "detail";
 		}
+		@RequestMapping(value="/delete", method=RequestMethod.GET)
+		public String delete(@RequestParam("t_number") long t_number) {
+			System.out.println("delete: "+ t_number);
+			/*
+			 * TraineeService.delete()호출
+			 * TraineeRipository.delete()호출(mapper 호출시 sql.selectOne() 메서드 사용)
+			 * trainee-mapper.delete 호출(mapper에서 paramterType="long"이라고 하면 됨)	 		
+			 */
+			ts.delete(t_number);
+			// 삭제 완료된 목록
+			// 삭제 처리 후 단순히 findAll.jsp만 출력한 결과 (list를 가져가는 내용이 없음)
+			// return "findAll";
+			
+			// 삭제가 반영된 목록을 다시 요청해야하며,
+			// 다시 요청하는 방식은 redirect가 있음.
+			// redirect 를 할때는 컨트롤러의 주소를 요청해야 함.(절대로 jsp를 요청하는 것이 아님)
+			return "redirect:/findAll";
+		}
+		@RequestMapping(value="/update", method=RequestMethod.GET)
+		public String updateForm(@RequestParam("t_number") long t_number, Model model) {
+			System.out.println("update: "+ t_number);
+			
+			TraineeDTO trainee = ts.findById(t_number);
+			model.addAttribute("trainee",trainee);
+			return "update";
+		}
+		@RequestMapping(value="/update", method=RequestMethod.POST)
+		public String update(@ModelAttribute TraineeDTO trainee) {
+			System.out.println("Controller.update()"+ trainee);
+			ts.update(trainee);
+			return "redirect:/findAll";
+		}
+		
+		
 }
 
 

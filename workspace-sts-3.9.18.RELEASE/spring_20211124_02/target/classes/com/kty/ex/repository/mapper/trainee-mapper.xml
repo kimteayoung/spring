@@ -15,4 +15,10 @@
  	<select id="findById" parameterType="long" resultType="tdto">
  		select * from trainee where t_number=#{t_number}
  	</select>
+ 	<delete id="delete" parameterType="long">
+ 		delete from trainee where t_number=#{t_number}
+ 	</delete>
+ 	<update id="update" parameterType="tdto">
+ 		update trainee set t_phone=#{t_phone}, t_assress=#{t_assress}, where t_number=#{t_number}
+ 	</update>
  </mapper>

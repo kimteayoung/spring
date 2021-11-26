@@ -47,9 +47,16 @@ public class TraineeService {
 		System.out.println("TraineeService.findById(): "+ trainee);
 		return trainee;
 	}
-
+	public void delete(long t_number) {
+		ts.delete(t_number);
 }
 
+	public void update(TraineeDTO trainee) {
+		ts.update(trainee);
+		
+	}
+
+}
 
 
 
