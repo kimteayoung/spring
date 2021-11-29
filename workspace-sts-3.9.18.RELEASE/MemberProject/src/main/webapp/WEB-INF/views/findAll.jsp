@@ -25,7 +25,7 @@
 <th>수정</th>
 </tr>
 
-<c:forEach items="${mList}" var="m">
+<c:forEach items="${memberList}" var="m">
 	<tr>
 	<td>${m.m_number}</td>
 	<td>${m.m_id}</td>
@@ -34,7 +34,7 @@
 	<td>${m.m_email}</td>
 	<td>${m.m_phone}</td>
 	<!-- detail 이라는 주소요청을 통해 회원 상세조회를 해봅시다. 상세조회 데이터는 detail.jsp에 출력합니다. -->
-	<td>조회</td>
+	<td><a href="detail?m_number=${m.m_number}">조회</a></td>
 	<td>삭제</td>
 	<td>수정</td>
 	</tr>

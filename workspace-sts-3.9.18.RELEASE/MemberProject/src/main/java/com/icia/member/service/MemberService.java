@@ -39,9 +39,14 @@ public class MemberService {
 	}
 
 	public List<MemberDTO> findAll() {
-			List<MemberDTO> mList = mr.findAll();
+			List<MemberDTO> memberList = mr.findAll();
 		
-		return mList;
+		return memberList;
+	}
+
+	public MemberDTO findById(long m_number) {
+		MemberDTO member = mr.findById(m_number);
+		return member;
 	}
 
 }

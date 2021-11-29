@@ -9,7 +9,6 @@
     <fullyQualifiedTypeName name="com.kty.ex.repository.TraineeRipository"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="com.icia.member.reposirory.MemverRepository"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
@@ -24,4 +23,5 @@
     <fullyQualifiedTypeName name="org.springframework.util.SystemPropertyUtils"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
 </qualifiedTypeNameHistroy>
