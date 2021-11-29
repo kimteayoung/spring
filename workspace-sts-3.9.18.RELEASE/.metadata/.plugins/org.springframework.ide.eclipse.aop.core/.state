@@ -2,6 +2,7 @@
 <aop-reference-model>
 <aop-project name="spring_20211123_01"/>
 <aop-project name="spring_20211123_02"/>
+<aop-project name="MemberProject"/>
 <aop-project name="spring_20211124_01"/>
 <aop-project name="spring_20211124_02"/>
 </aop-reference-model>
