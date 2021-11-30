@@ -40,7 +40,6 @@ public class MemberService {
 
 	public List<MemberDTO> findAll() {
 			List<MemberDTO> memberList = mr.findAll();
-		
 		return memberList;
 	}
 
@@ -49,4 +48,18 @@ public class MemberService {
 		return member;
 	}
 
+	public void delete(long m_number) {
+		mr.delete(m_number);
+	}
+	public void update(MemberDTO member) {
+		mr.update(member);
+	}
+
+	public String idDuplicate(String m_id) {
+		String result = mr.idDuplicate(m_id);
+		if(result == null)
+			return "ok"; // 조회결과가 없기 때문에 해당 아이디는 사용가능
+		else
+			return "no"; // 조회결과가 없기 때문에 해당 아이디는 사용불가능
+	}
 }

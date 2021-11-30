@@ -21,4 +21,5 @@
  	<update id="update" parameterType="tdto">
  		update trainee set t_phone=#{t_phone}, t_assress=#{t_assress}, where t_number=#{t_number}
  	</update>
+ 	
  </mapper>

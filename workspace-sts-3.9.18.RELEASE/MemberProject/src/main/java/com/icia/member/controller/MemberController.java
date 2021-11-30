@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.icia.member.dto.MemberDTO;
 import com.icia.member.service.MemberService;
@@ -51,7 +52,7 @@ public class MemberController {
 	}
 	// 로그아웃 처리
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public  String logdout(HttpSession session) {
+	public  String logout(HttpSession session) {
 		// 세숀에 저장된 데이터를 지움.
 		session.invalidate();
 		return "index";
@@ -71,5 +72,46 @@ public class MemberController {
 		model.addAttribute("member",member);
 		return "detail";
 	}
+	@RequestMapping(value="/delete", method=RequestMethod.GET)
+	public String delete(@RequestParam("m_number") long m_number) {
+		System.out.println("delete: "+ m_number);
+		
+		ms.delete(m_number);
+		
+		return "redirect:/findAll";
+	}
+	@RequestMapping(value="/update", method=RequestMethod.GET)
+	public String updateForm(@RequestParam("m_number") long m_number, Model model) {
+		System.out.println("update: "+ m_number);
+		
+		MemberDTO member = ms.findById(m_number);
+		model.addAttribute("member",member);
+		return "update";
+	}
+	@RequestMapping(value="/update", method=RequestMethod.POST)
+	public String update(@ModelAttribute MemberDTO member, Model model) {
+		System.out.println("Controller.update()"+ member);
+		ms.update(member);
+//		member = ms.findById(member.getM_number());
+//		model.addAttribute("member, member");
+//		return "detail";
+		return "redirect:/detail?m_number="+member.getM_number();
+	}
+	
+	// 아이디 중복체크
+	@RequestMapping(value="/idDuplicate", method=RequestMethod.POST)
+	public @ResponseBody String idDuplicate(@RequestParam("m_id") String m_id) {
+		System.out.println("MemberController.idDuplicate(): "+ m_id);
+		String result = ms.idDuplicate(m_id);
+		return result; // "ok" or "no"
+	}
+	
+	// ajax로 상세조회
+	@RequestMapping(value="/detailAjax", method=RequestMethod.POST)
+	public @ResponseBody MemberDTO detailAjax(@RequestParam("m_number") long m_number) {
+		MemberDTO member = ms.findById(m_number);
+		return member;
+	}
+	
 	
 }
